@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<style>
+			body {          
+				font-family: Arial, sans-serif;
+				background-color: #f0f0f0;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.card {
+				width: 250px;
+				background-color: white;
+				margin: 10px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				box-shadow: 2px 2px 5px #888;
+				overflow: hidden;
+				transition: transform 0.2s;
+				cursor: pointer;
+				display: flex;
+			}
+
+			.card:hover {
+				transform: scale(1.05);
+			}
+
+			.card img {
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+			}
+
+			.card-content {
+				padding: 10px;
+				flex: 1;
+			}
+
+			.card h2 {
+				font-size: 1.2em;
+			}
+
+			.card p {
+				font-size: 0.9em;
+			}
+
+			a {
+				text-decoration: none;
+				color: #0077cc;
+			}
+		</style>
+		<script src="js/data.js"></script>
+		<script>
+			const body = document.body;
+
+			data.forEach(tool => {
+				const card = document.createElement('div');
+				card.className = 'card';
+				card.setAttribute('onclick', `window.location.href='${tool.href}';`);
+
+				const img = document.createElement('img');
+				img.src = tool.img;
+				img.alt = tool.name;
+
+				const cardContent = document.createElement('div');
+				cardContent.className = 'card-content';
+
+				const h2 = document.createElement('h2');
+				const a = document.createElement('a');
+				a.href = tool.href;
+				a.textContent = tool.name;
+				h2.appendChild(a);
+
+				const p = document.createElement('p');
+				p.textContent = tool.info;
+
+				cardContent.appendChild(h2);
+				cardContent.appendChild(p);
+
+				card.appendChild(img);
+				card.appendChild(cardContent);
+
+				body.appendChild(card);
+			});
+		</script>
+	</body>
+</html>
